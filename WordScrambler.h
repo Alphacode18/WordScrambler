@@ -13,7 +13,13 @@ int parse_file(char *);
 
 /* Error Constants */
 
+#define SUCCESS (0)
 #define FILE_NOT_FOUND (-1)
+#define FILE_WRITE_ERROR (-2)
+
+/* Size Constants */
+
+#define DICT_LEN (100000)
 
 /* Global Variables */
 
