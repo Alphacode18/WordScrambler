@@ -5,6 +5,7 @@
 #include <assert.h>
 
 char *g_dictionary = NULL;
+int status;
 
 int main() {
 
@@ -16,4 +17,8 @@ int parse_file(char *filename) {
     if (file_pointer_in == NULL) {
         return FILE_NOT_FOUND;
     }
+    do {
+        status = fscanf(file_pointer_in, "%[^\n]\n", g_dictionary);
+        g_dictionary += 1;
+    } while (status == 1);
 }

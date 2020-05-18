@@ -18,6 +18,6 @@ int parse_file(char *);
 /* Global Variables */
 
 extern char *g_dictionary;
-
+extern int status;
 
 #endif
