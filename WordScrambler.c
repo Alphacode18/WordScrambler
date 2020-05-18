@@ -8,21 +8,21 @@ char g_dictionary[DICT_LEN][MAX_CHAR] = {};
 int status;
 
 int main() {
-    printf("Parsing File ...");
+    printf("Parsing File ...\n\n");
     int result = parse_file("WordList.txt");
     if (result == 0) {
-        printf("File Parsed Successfully");
+        printf("File Parsed Successfully\n");
     }
     else {
-        printf("File Not Parsed");
+        printf("File Not Parsed\n");
     }
-    printf("Testing Parsed File ...");
+    printf("Testing Parsed File ...\n\n");
     result = parse_test();
     if (result == 0) {
-        printf("Test Passed");
+        printf("Test Passed\n");
     }
     else {
-        printf("Test Failed");
+        printf("Test Failed\n");
     }
     return 0;
 }

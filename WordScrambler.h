@@ -4,11 +4,8 @@
  *
  */ 
 
-#ifndef WordScrambler.h
-#define WordScrambler.h
-
 int parse_file(char *);
-int parse_test(char *)
+int parse_test();
 
 /* Error Constants */
 
@@ -18,12 +15,10 @@ int parse_test(char *)
 
 /* Size Constants */
 
-#define DICT_LEN (100000)
+#define DICT_LEN (10000)
 #define MAX_CHAR (1000)
 
 /* Global Variables */
 
 extern char g_dictionary[DICT_LEN][MAX_CHAR];
 extern int status;
-
-#endif
