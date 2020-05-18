@@ -2,8 +2,6 @@
  * 
  * @brief The file defines constants and functions for . 
  *
- * @par       
- * COPYRIGHT NOTICE: (c) 2018 Barr Group.  All rights reserved.
  */ 
 
 #ifndef WordScrambler.h
@@ -23,7 +21,7 @@ int parse_file(char *);
 
 /* Global Variables */
 
-extern char *g_dictionary;
+extern char g_dictionary[DICT_LEN];
 extern int status;
 
 #endif
