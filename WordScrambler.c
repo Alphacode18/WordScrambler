@@ -4,11 +4,27 @@
 #include <stdlib.h>
 #include <assert.h>
 
-char g_dictionary[DICT_LEN] = {};
+char g_dictionary[DICT_LEN][MAX_CHAR] = {};
 int status;
 
 int main() {
-
+    printf("Parsing File ...");
+    int result = parse_file("WordList.txt");
+    if (result == 0) {
+        printf("File Parsed Successfully");
+    }
+    else {
+        printf("File Not Parsed");
+    }
+    printf("Testing Parsed File ...");
+    result = parse_test();
+    if (result == 0) {
+        printf("Test Passed");
+    }
+    else {
+        printf("Test Failed");
+    }
+    return 0;
 }
 
 int parse_file(char *filename) {
