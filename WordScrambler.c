@@ -7,10 +7,6 @@
 char g_dictionary[DICT_LEN][MAX_CHAR] = {};
 int status;
 
-int main() {
-    return 0;
-}
-
 int parse_file(char *filename) {
     assert(filename != NULL);
     FILE *file_pointer_in = fopen(filename, "r");
