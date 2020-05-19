@@ -4,7 +4,7 @@ CC = gcc
 #The compiler flags in use
 # -Wall activates all warnings
 # -Werror makes all warnings into errors
-CFLAGS = -Wall -Werror
+CFLAGS = -Wall -Werror -std=c99 -O
 
 #The build target executable
 TARGET = WordScrambler
