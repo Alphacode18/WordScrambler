@@ -18,6 +18,7 @@ run:
 
 clean:
 	$(RM) test.txt $(TARGET) $(TARGET)_main
+	clear
 
 submit:
 	git add .
