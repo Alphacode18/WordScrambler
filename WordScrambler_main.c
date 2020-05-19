@@ -5,6 +5,5 @@
 #include <assert.h>
 
 int main() {
-    parse_test();
     return 0;
 }
