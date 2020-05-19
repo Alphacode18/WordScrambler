@@ -13,6 +13,7 @@ file:
 	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(TARGET)_main.c
 
 run:
+	clear
 	./$(TARGET)
 
 clean:
