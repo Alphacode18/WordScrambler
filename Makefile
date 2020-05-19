@@ -18,7 +18,7 @@ run:
 clean:
 	$(RM) test.txt $(TARGET) $(TARGET)_main
 
-git:
+submit:
 	git add .
 	git commit -m "$(m)"
 	git push -u origin master

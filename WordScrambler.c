@@ -4,8 +4,18 @@
 #include <stdlib.h>
 #include <assert.h>
 
-char g_dictionary[DICT_LEN][MAX_CHAR] = {};
+char g_dictionary[DICT_LEN][MAX_CHAR_LEN] = {};
 int status;
+
+/*
+ * The parse_file function parses in the text file contain english
+ * words into the g_dictionary global string array.
+ * @param filename: The function takes in the string of the file name.
+ * @return SUCCESS/FILE_NOT_FOUND: The function returns SUCCESS if
+ * everything is executed perfectly. FILE_NOT_FOUND if the file does not
+ * exist and NON_COMPATIBLE_FILE if the format of the file is wrong or if
+ * has malformed data.
+ */
 
 int parse_file(char *filename) {
     assert(filename != NULL);
@@ -16,14 +26,27 @@ int parse_file(char *filename) {
     int counter = 0;
     do {
         status = fscanf(file_pointer_in, "%[^\n]\n", g_dictionary[counter]);
+        if (status != 1) {
+            return NON_COMPATIBLE_FILE;
+        }
         counter += 1;
     } while (status == 1);
     fclose(file_pointer_in);
     file_pointer_in = NULL;
     return SUCCESS;
-}
+} /* parse_file() */
 
-int print_image(char *image_file) {
+/*
+ * The print_image function helps output ASCII graphics on the
+ * command line. It uses the process_image helper function to 
+ * display the image.
+ * @param image_file: The function takes in a image_file string name.
+ * @return SUCESS/FILE_NOT_FOUND: The function returns SUCCESS if image
+ * is parsed and displayed successfully. And FILE_NOT_FOUND if wrong file
+ * is inputted.
+ */
+
+int render_image(char *image_file) {
     assert(image_file != NULL);
     FILE *file_pointer_in = fopen(image_file, "r");
     if (file_pointer_in == NULL) {
@@ -33,14 +56,33 @@ int print_image(char *image_file) {
     fclose(file_pointer_in);
     file_pointer_in = NULL;
     return SUCCESS;
-}
+} /* render_image() */
+
+/*
+ * The process_image helper function takes in a file pointer
+ * and processes the ASCII text into displayable text.
+ * @param file_pointer_in: The function takes in a file pointer
+ * as a parameter.
+ * @return void: The function does not return anything.
+ */
 
 void process_image(FILE *file_pointer_in) {
-    char read_string[MAX_BUFFER];
-    while(fgets(read_string, sizeof(read_string), file_pointer_in) != NULL) {
-      printf("%s",read_string);
+    char ascii_buffer[MAX_BUFFER_LEN];
+    while(fgets(ascii_buffer, sizeof(ascii_buffer), file_pointer_in) != NULL) {
+      printf("%s", ascii_buffer);
     }
-}
+} /* process_image() */
+
+/*
+ * The parse_test function prints out the contents of g_dictionary array
+ * to a test ouput file.
+ * @instruction: diff [input_file name] [output_file name] to check for
+ * any differences.
+ * @param filename: The function takes in the string of the file name.
+ * @return SUCCESS/FILE_NOT_FOUND: The function returns SUCCESS if
+ * everything is executed perfectly. FILE_NOT_FOUND if the file does not
+ * exist.
+ */
 
 int parse_test() {
     printf("Parsing File ...\n");
@@ -65,4 +107,4 @@ int parse_test() {
     file_pointer_out = NULL;
     printf("Test Passed\n\n");
     return SUCCESS;
-}
+} /* parse_test() */
