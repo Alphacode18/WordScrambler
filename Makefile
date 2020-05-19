@@ -12,5 +12,8 @@ TARGET = WordScrambler
 file:
 	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(TARGET)_main.c
 
+run:
+	./$(TARGET)
+
 clean:
 	$(RM) test.txt $(TARGET) $(TARGET)_main
