@@ -23,6 +23,25 @@ int parse_file(char *filename) {
     return SUCCESS;
 }
 
+int print_image(char *image_file) {
+    assert(image_file != NULL);
+    FILE *file_pointer_in = fopen(image_file, "r");
+    if (file_pointer_in == NULL) {
+        return FILE_NOT_FOUND;
+    }
+    process_image(file_pointer_in);
+    fclose(file_pointer_in);
+    file_pointer_in = NULL;
+    return SUCCESS;
+}
+
+void process_image(FILE *file_pointer_in) {
+    char read_string[MAX_BUFFER];
+    while(fgets(read_string, sizeof(read_string), file_pointer_in) != NULL) {
+      printf("%s",read_string);
+    }
+}
+
 int parse_test() {
     printf("Parsing File ...\n");
     int result = parse_file("WordList.txt");

@@ -4,8 +4,12 @@
  *
  */ 
 
+#include <stdio.h>
+
 int parse_file(char *);
 int parse_test();
+int print_image(char *);
+void process_image(FILE *file_pointer_in);
 
 /* Error Constants */
 
@@ -17,6 +21,7 @@ int parse_test();
 
 #define DICT_LEN (10000)
 #define MAX_CHAR (1000)
+#define MAX_BUFFER (128)
 
 /* Global Variables */
 
