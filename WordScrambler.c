@@ -8,22 +8,6 @@ char g_dictionary[DICT_LEN][MAX_CHAR] = {};
 int status;
 
 int main() {
-    printf("Parsing File ...\n\n");
-    int result = parse_file("WordList.txt");
-    if (result == 0) {
-        printf("File Parsed Successfully\n");
-    }
-    else {
-        printf("File Not Parsed\n");
-    }
-    printf("Testing Parsed File ...\n\n");
-    result = parse_test();
-    if (result == 0) {
-        printf("Test Passed\n");
-    }
-    else {
-        printf("Test Failed\n");
-    }
     return 0;
 }
 
@@ -44,6 +28,15 @@ int parse_file(char *filename) {
 }
 
 int parse_test() {
+    printf("Parsing File ...\n");
+    int result = parse_file("WordList.txt");
+    if (result == 0) {
+        printf("File Parsed Successfully\n\n");
+    }
+    else {
+        printf("File Not Parsed\n\n");
+    }
+    printf("Testing Parsed File ...\n");
     FILE *file_pointer_out = fopen("test.txt", "w");
     if (file_pointer_out == NULL) {
         return FILE_WRITE_ERROR;
@@ -55,5 +48,6 @@ int parse_test() {
     }
     fclose(file_pointer_out);
     file_pointer_out = NULL;
+    printf("Test Passed\n\n");
     return SUCCESS;
 }
