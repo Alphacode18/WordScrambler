@@ -33,3 +33,4 @@ void clear_buffer();
 
 extern char g_dictionary[DICT_LEN][MAX_CHAR_LEN];
 extern int status;
+extern int choice;
