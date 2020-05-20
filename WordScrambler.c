@@ -79,7 +79,6 @@ void process_image(FILE *file_pointer_in) {
 
 void render_choice() {
     int choice = process_choice();
-    printf("%d\n", choice);
     while ((choice == INVALID_INPUT) || (choice == OUT_OF_BOUNDS)) {
         clear_buffer();
         choice = process_choice();
@@ -88,6 +87,9 @@ void render_choice() {
         printf("Exiting program ...\n");
         delay(1000);
         printf("Exited Program Successfully.\n");
+    }
+    else {
+        return;
     }
 } /* render_choice() */
 
