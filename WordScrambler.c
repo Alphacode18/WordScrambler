@@ -5,8 +5,8 @@ char g_dictionary[DICT_LEN][MAX_CHAR_LEN] = {};
 /*
  * The parse_file function parses in the text file contain english
  * words into the g_dictionary global string array.
- * @param filename: The function takes in the string of the file name.
- * @return SUCCESS/FILE_NOT_FOUND: The function returns SUCCESS if
+ * @param filename : The function takes in the string of the file name.
+ * @return SUCCESS/FILE_NOT_FOUND : The function returns SUCCESS if
  * everything is executed perfectly. FILE_NOT_FOUND if the file does not
  * exist and NON_COMPATIBLE_FILE if the format of the file is wrong or if
  * has malformed data.
@@ -36,8 +36,8 @@ int parse_file(char *filename) {
  * The print_image function helps output ASCII graphics on the
  * command line. It uses the process_image helper function to 
  * display the image.
- * @param image_file: The function takes in a image_file string name.
- * @return SUCESS/FILE_NOT_FOUND: The function returns SUCCESS if image
+ * @param image_file : The function takes in a image_file string name.
+ * @return SUCESS/FILE_NOT_FOUND : The function returns SUCCESS if image
  * is parsed and displayed successfully. And FILE_NOT_FOUND if wrong file
  * is inputted.
  */
@@ -57,9 +57,9 @@ int render_image(char *image_file) {
 /*
  * The process_image helper function takes in a file pointer
  * and processes the ASCII text into displayable text.
- * @param file_pointer_in: The function takes in a file pointer
+ * @param file_pointer_in : The function takes in a file pointer
  * as a parameter.
- * @return void: The function does not return anything.
+ * @return void : The function does not return anything.
  */
 
 void process_image(FILE *file_pointer_in) {
@@ -70,9 +70,11 @@ void process_image(FILE *file_pointer_in) {
 } /* process_image() */
 
 /*
- *
- * 
- * 
+ * This function helps in making sense of the user choice on the
+ * command line. It uses process_choice and clear_buffer as
+ * helper functions.
+ * @param - : No parameters.
+ * @return void : No value returned.
  */
 
 void render_choice() {
@@ -91,9 +93,14 @@ void render_choice() {
 } /* render_choice() */
 
 /*
- *
- * 
- * 
+ * This function helps process the user choice and deals with
+ * taking in the input.
+ * @param - : No parameters.
+ * @return INVALID_INPUT/SUCCESS/EXIT/OUT_OF_BOUNDS : This function
+ * return INVALID_INPUT in case of wrong/malformed input, SUCCESS if
+ * everything with the input is perfect, EXIT if the user choses to quit
+ * the program and OUT_OF_BOUNDS if the user writes in a valid number
+ * which is neither 1 or 2.
  */ 
 
 int process_choice() {
@@ -114,9 +121,10 @@ int process_choice() {
 } /* process_choice() */
 
 /*
- *
- * 
- * 
+ * The clear buffer system flushes the input buffer while taking
+ * user input. It is used as a helper function for render_choice.
+ * @param - : No parameter.
+ * @return void : No return value.
  */ 
 
 void clear_buffer() {
@@ -127,9 +135,9 @@ void clear_buffer() {
 /*
  * The parse_test function prints out the contents of g_dictionary array
  * to a test ouput file.
- * @instruction: diff [input_file name] [output_file name] to check for
+ * @instruction : diff [input_file name] [output_file name] to check for
  * any differences.
- * @param filename: The function takes in the string of the file name.
+ * @param filename : The function takes in the string of the file name.
  * @return SUCCESS/FILE_NOT_FOUND: The function returns SUCCESS if
  * everything is executed perfectly. FILE_NOT_FOUND if the file does not
  * exist.
