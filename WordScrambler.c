@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
+#include <ctype.h>
 
 char g_dictionary[DICT_LEN][MAX_CHAR_LEN] = {};
 
@@ -84,6 +86,18 @@ void render_choice() {
     printf("Would you like us to scramble some words for you?: \n");
     printf("1. Yes\n2. No\n");
     printf("Your Choice\n");
+    int return_value = process_choice();
+    while (return_value == INVALID_INPUT) {
+        clear_buffer();
+        return_value = process_choice();
+    }
+    switch (return_value) {
+    case EXIT:
+        printf("Exiting Input\n");
+        break;
+    default:
+        printf("Please input how many letters are required\n");
+    }
 } /* render_choice() */
 
 /*
@@ -93,7 +107,25 @@ void render_choice() {
  */ 
 
 int process_choice() {
+    char choice[MAX_BUFFER_LEN] = {};
+    scanf("%[^\n]", choice);
+    if (strlen(choice) != 1) {
+        return INVALID_INPUT;
+    }
+    if (!(isdigit(choice[0]))) {
+        return INVALID_INPUT;
+    }
+    int char_to_int = (int) (choice[0] - '0');
+    if (char_to_int == 2) {
+        return EXIT;
+    }
+    return SUCCESS;
 } /* process_choice() */
+
+void clear_buffer() {
+    char excess;
+    while((excess = getchar()) != '\n' && excess != EOF);
+}
 
 /*
  * The parse_test function prints out the contents of g_dictionary array
