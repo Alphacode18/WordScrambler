@@ -78,17 +78,15 @@ void process_image(FILE *file_pointer_in) {
  */
 
 void render_choice() {
-    int return_value = process_choice();
-    while (return_value == INVALID_INPUT) {
+    int choice = process_choice();
+    while (choice == INVALID_INPUT) {
         clear_buffer();
-        return_value = process_choice();
+        choice = process_choice();
     }
-    switch (return_value) {
-    case EXIT:
-        printf("Exiting Input\n");
-        break;
-    default:
-        printf("Please input how many letters are required\n");
+    if (choice == EXIT) {
+        printf("Exiting program ...\n");
+        delay(1000);
+        printf("Exited Program Successfully.\n");
     }
 } /* render_choice() */
 
@@ -158,3 +156,18 @@ int parse_test() {
     file_pointer_out = NULL;
     return SUCCESS;
 } /* parse_test() */
+
+/*
+ *
+ * 
+ */ 
+
+void delay(int milliseconds) {
+    long pause;
+    clock_t now, then;
+    pause = milliseconds * (CLOCKS_PER_SEC / 1000);
+    now = then = clock();
+    while( (now-then) < pause ) {
+      now = clock();
+    }
+} /* delay() */

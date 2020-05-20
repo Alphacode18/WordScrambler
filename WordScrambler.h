@@ -9,6 +9,7 @@
 #include <assert.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 
 int parse_file(char *);
 int parse_test();
@@ -17,6 +18,7 @@ void process_image(FILE *file_pointer_in);
 void render_choice();
 int process_choice();
 void clear_buffer();
+void delay(int);
 
 /* Error Constants */
 
