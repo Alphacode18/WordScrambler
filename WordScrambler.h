@@ -10,6 +10,8 @@ int parse_file(char *);
 int parse_test();
 int render_image(char *);
 void process_image(FILE *file_pointer_in);
+void render_choice();
+int process_choice();
 
 /* Error Constants */
 

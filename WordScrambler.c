@@ -5,7 +5,6 @@
 #include <assert.h>
 
 char g_dictionary[DICT_LEN][MAX_CHAR_LEN] = {};
-int status;
 
 /*
  * The parse_file function parses in the text file contain english
@@ -24,6 +23,7 @@ int parse_file(char *filename) {
         return FILE_NOT_FOUND;
     }
     int counter = 0;
+    int status;
     do {
         status = fscanf(file_pointer_in, "%[^\n]\n", g_dictionary[counter]);
         if (status != 1) {
@@ -72,6 +72,28 @@ void process_image(FILE *file_pointer_in) {
       printf("%s", ascii_buffer);
     }
 } /* process_image() */
+
+/*
+ *
+ * 
+ * 
+ */
+
+void render_choice() {
+    printf("\n\n\n");
+    printf("Would you like us to scramble some words for you?: \n");
+    printf("1. Yes\n2. No\n");
+    printf("Your Choice\n");
+} /* render_choice() */
+
+/*
+ *
+ * 
+ * 
+ */ 
+
+int process_choice() {
+} /* process_choice() */
 
 /*
  * The parse_test function prints out the contents of g_dictionary array
