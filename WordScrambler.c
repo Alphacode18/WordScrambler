@@ -79,7 +79,8 @@ void process_image(FILE *file_pointer_in) {
 
 void render_choice() {
     int choice = process_choice();
-    while (choice == INVALID_INPUT) {
+    printf("%d\n", choice);
+    while ((choice == INVALID_INPUT) || (choice == OUT_OF_BOUNDS)) {
         clear_buffer();
         choice = process_choice();
     }
@@ -108,7 +109,7 @@ int process_choice() {
     if ((strlen(choice) != 1) && (!(isdigit(choice[0])))) {
         return INVALID_INPUT;
     }
-    int integer_choice = (int) (choice[0] - '0');
+    int integer_choice = atoi(choice);
     if (integer_choice == 1) {
         return SUCCESS;
     }
