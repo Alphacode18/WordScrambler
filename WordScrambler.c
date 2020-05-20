@@ -1,11 +1,5 @@
 #include "WordScrambler.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
-#include <ctype.h>
-
 char g_dictionary[DICT_LEN][MAX_CHAR_LEN] = {};
 
 /*
@@ -106,23 +100,29 @@ int process_choice() {
     printf(">>>> ");
     char choice[MAX_BUFFER_LEN] = {};
     scanf("%[^\n]", choice);
-    if (strlen(choice) != 1) {
+    if ((strlen(choice) != 1) && (!(isdigit(choice[0])))) {
         return INVALID_INPUT;
     }
-    if (!(isdigit(choice[0]))) {
-        return INVALID_INPUT;
+    int integer_choice = (int) (choice[0] - '0');
+    if (integer_choice == 1) {
+        return SUCCESS;
     }
-    int char_to_int = (int) (choice[0] - '0');
-    if (char_to_int == 2) {
+    else if (integer_choice == 2) {
         return EXIT;
     }
-    return SUCCESS;
+    return OUT_OF_BOUNDS;
 } /* process_choice() */
+
+/*
+ *
+ * 
+ * 
+ */ 
 
 void clear_buffer() {
     char excess;
     while((excess = getchar()) != '\n' && excess != EOF);
-}
+} /* clear_buffer() */
 
 /*
  * The parse_test function prints out the contents of g_dictionary array
@@ -136,15 +136,7 @@ void clear_buffer() {
  */
 
 int parse_test() {
-    printf("Parsing File ...\n");
-    int result = parse_file("WordList.txt");
-    if (result == 0) {
-        printf("File Parsed Successfully\n\n");
-    }
-    else {
-        printf("File Not Parsed\n\n");
-    }
-    printf("Testing Parsed File ...\n");
+    parse_file("WordList.txt");
     FILE *file_pointer_out = fopen("test.txt", "w");
     if (file_pointer_out == NULL) {
         return FILE_WRITE_ERROR;
@@ -156,6 +148,5 @@ int parse_test() {
     }
     fclose(file_pointer_out);
     file_pointer_out = NULL;
-    printf("Test Passed\n\n");
     return SUCCESS;
 } /* parse_test() */

@@ -5,6 +5,10 @@
  */ 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <ctype.h>
 
 int parse_file(char *);
 int parse_test();
@@ -22,6 +26,7 @@ void clear_buffer();
 #define FILE_WRITE_ERROR (-3)
 #define INVALID_INPUT (-4)
 #define EXIT (-5)
+#define OUT_OF_BOUNDS (-6)
 
 /* Size Constants */
 
