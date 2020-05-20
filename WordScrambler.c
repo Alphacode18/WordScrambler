@@ -82,10 +82,6 @@ void process_image(FILE *file_pointer_in) {
  */
 
 void render_choice() {
-    printf("\n\n\n");
-    printf("Would you like us to scramble some words for you?: \n");
-    printf("1. Yes\n2. No\n");
-    printf("Your Choice\n");
     int return_value = process_choice();
     while (return_value == INVALID_INPUT) {
         clear_buffer();
@@ -107,6 +103,7 @@ void render_choice() {
  */ 
 
 int process_choice() {
+    printf(">>>> ");
     char choice[MAX_BUFFER_LEN] = {};
     scanf("%[^\n]", choice);
     if (strlen(choice) != 1) {
