@@ -16,7 +16,7 @@ int parse_test();
 int render_image(char *);
 void process_image(FILE *file_pointer_in);
 int process_choice();
-void process_num_letters();
+int process_num_letters();
 char *process_input();
 void clear_buffer();
 void delay(int);

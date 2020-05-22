@@ -17,11 +17,18 @@ int main() {
       printf("Exited Program Successfully.\n");
       return 0;
     }
-    else {
-      delay(500);
-    }
     printf("\n");
     printf("How many letters are present?\n");
+    clear_buffer();
+    int num_letters = process_num_letters();
+    while (num_letters == INVALID_INPUT) {
+      clear_buffer();
+      num_letters = process_num_letters();
+    }
     printf("\n");
+    char *letter_array = malloc(num_letters * sizeof(char));
+    clear_buffer();
+    free(letter_array);
+    letter_array = NULL;
     return 0;
 }

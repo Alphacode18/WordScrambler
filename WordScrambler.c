@@ -98,6 +98,27 @@ int process_choice() {
 } /* process_choice() */
 
 /*
+ * This function helps process the user choice for number of letters 
+ * and deals with taking care of the input.
+ * @param - : No parameters.
+ * @return INVALID_INPUT : This function return INVALID_INPUT in case of wrong/malformed input.
+ */ 
+
+int process_num_letters() {
+    char *input = process_input();
+    if ((strlen(input) <= 0) || (strlen(input) > 2) || (!(isdigit(input[0])))) {
+        return INVALID_INPUT;
+    }
+    int integer_value = atoi(input);
+    free(input);
+    input = NULL;
+    if (integer_value == 0) {
+        return INVALID_INPUT;
+    }
+    return integer_value;
+} /* process_num_letters() */
+
+/*
  * This function processes user input and returns a string for further operations. 
  * It is used as a helper function.
  * @param - : No parameters.
