@@ -15,8 +15,9 @@ int parse_file(char *);
 int parse_test();
 int render_image(char *);
 void process_image(FILE *file_pointer_in);
-void render_choice();
 int process_choice();
+void process_num_letters();
+char *process_input();
 void clear_buffer();
 void delay(int);
 
@@ -41,3 +42,5 @@ void delay(int);
 extern char g_dictionary[DICT_LEN][MAX_CHAR_LEN];
 extern int status;
 extern int choice;
+extern int num_letters;
+extern char *letter_array;

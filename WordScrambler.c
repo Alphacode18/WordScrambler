@@ -70,30 +70,6 @@ void process_image(FILE *file_pointer_in) {
 } /* process_image() */
 
 /*
- * This function helps in making sense of the user choice on the
- * command line. It uses process_choice and clear_buffer as
- * helper functions.
- * @param - : No parameters.
- * @return void : No value returned.
- */
-
-void render_choice() {
-    int choice = process_choice();
-    while ((choice == INVALID_INPUT) || (choice == OUT_OF_BOUNDS)) {
-        clear_buffer();
-        choice = process_choice();
-    }
-    if (choice == EXIT) {
-        printf("Exiting program ...\n");
-        delay(1000);
-        printf("Exited Program Successfully.\n");
-    }
-    else {
-        return;
-    }
-} /* render_choice() */
-
-/*
  * This function helps process the user choice and deals with
  * taking in the input.
  * @param - : No parameters.
@@ -105,21 +81,35 @@ void render_choice() {
  */ 
 
 int process_choice() {
-    printf(">>>> ");
-    char choice[MAX_BUFFER_LEN] = {};
-    scanf("%[^\n]", choice);
-    if ((strlen(choice) != 1) && (!(isdigit(choice[0])))) {
+    char *input = process_input();
+    if ((strlen(input) <= 0) || (strlen(input) > 2) || (!(isdigit(input[0])))) {
         return INVALID_INPUT;
     }
-    int integer_choice = atoi(choice);
-    if (integer_choice == 1) {
+    int integer_value = atoi(input);
+    free(input);
+    input = NULL;
+    if (integer_value == 1) {
         return SUCCESS;
     }
-    else if (integer_choice == 2) {
+    else if (integer_value == 2) {
         return EXIT;
     }
     return OUT_OF_BOUNDS;
 } /* process_choice() */
+
+/*
+ * This function processes user input and returns a string for further operations. 
+ * It is used as a helper function.
+ * @param - : No parameters.
+ * @return char * : It returns a string.
+ */
+
+char *process_input() {
+    printf(">>>> ");
+    char *choice = malloc(MAX_BUFFER_LEN * sizeof(char));
+    scanf("%[^\n]", choice);
+    return choice;
+} /* process_input() */
 
 /*
  * The clear buffer system flushes the input buffer while taking
