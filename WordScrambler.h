@@ -17,6 +17,7 @@ int render_image(char *);
 void process_image(FILE *file_pointer_in);
 int process_choice();
 int process_num_letters();
+char process_letter();
 char *process_input();
 void clear_buffer();
 void delay(int);

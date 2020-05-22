@@ -27,7 +27,14 @@ int main() {
     }
     printf("\n");
     char *letter_array = malloc(num_letters * sizeof(char));
-    clear_buffer();
+    for (int i = 0; i < num_letters; i++) {
+      clear_buffer();
+      printf("Enter your letter: ");
+      letter_array[i] = process_letter();
+    }  
+    for (int i = 0; i < num_letters; i++) {
+      printf("Letter %d : %c\n", i + 1, letter_array[i]);
+    }
     free(letter_array);
     letter_array = NULL;
     return 0;
