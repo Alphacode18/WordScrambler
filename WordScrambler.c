@@ -127,7 +127,7 @@ int process_num_letters() {
 
 char process_letter() {
     char *input = process_input();
-    while (((strlen(input) <= 0) || (strlen(input) > 2)) || isdigit(input[0])) {
+    while (((strlen(input) <= 0) || (strlen(input) >= 2)) || isdigit(input[0])) {
         clear_buffer();
         input = process_input();
     }
