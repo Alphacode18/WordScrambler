@@ -32,6 +32,9 @@ int main() {
       printf("Enter your letter: ");
       letter_array[i] = process_letter();
     }  
+    /*for (int i = 0; i < num_letters; i++) {
+      printf("%c\n", letter_array[i]);
+    }*/
     free(letter_array);
     letter_array = NULL;
     return 0;

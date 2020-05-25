@@ -131,7 +131,7 @@ char process_letter() {
         clear_buffer();
         input = process_input();
     }
-    return (*input - 32);
+    return toupper(*input);
 } /* process_num_letters() */
 
 /*
