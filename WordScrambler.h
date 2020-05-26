@@ -41,6 +41,9 @@ void delay(int);
 /* Global Variables */
 
 extern char g_dictionary[DICT_LEN][MAX_CHAR_LEN];
+
+/* Required Variables */
+
 extern int status;
 extern int choice;
 extern int num_letters;

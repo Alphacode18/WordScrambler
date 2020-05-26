@@ -82,7 +82,7 @@ void process_image(FILE *file_pointer_in) {
 
 int process_choice() {
     char *input = process_input();
-    if ((strlen(input) <= 0) || (strlen(input) > 2) || (!(isdigit(input[0])))) {
+    if ((strlen(input) <= 0) || (strlen(input) >= 2) || (!(isdigit(input[0])))) {
         return INVALID_INPUT;
     }
     int integer_value = atoi(input);
@@ -106,7 +106,7 @@ int process_choice() {
 
 int process_num_letters() {
     char *input = process_input();
-    if ((strlen(input) <= 0) || (strlen(input) > 2) || (!(isdigit(input[0])))) {
+    if ((strlen(input) <= 0) || (strlen(input) >= 2) || (!(isdigit(input[0])))) {
         return INVALID_INPUT;
     }
     int integer_value = atoi(input);
